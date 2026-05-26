@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/toseikaneko/Documents/fitnessuniversity/flow/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/toseikaneko/Documents/fitnessuniversity/flow/anken/insta_reel"
+    ]
+  }
+}

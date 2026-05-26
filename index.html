@@ -5,67 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>健美食 | フィットネスの可能性を広げる食事会</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cinzel:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* =====================
+           CSS Variables / Reset
+        ===================== */
         :root {
-            --color-accent: #b38b4d;
-            --color-bg: #121418;
-            --color-glass: rgba(255, 255, 255, 0.02);
-            --color-deep-wine: #3a161b;
+            --accent: #b38b4d;
+            --accent-hover: #c49a5b;
+            --accent-dim: rgba(179, 139, 77, 0.1);
+            --accent-border: rgba(179, 139, 77, 0.3);
+            --accent-border-light: rgba(179, 139, 77, 0.2);
+            --accent-border-mid: rgba(179, 139, 77, 0.4);
+            --accent-70: rgba(179, 139, 77, 0.7);
+            --accent-80: rgba(179, 139, 77, 0.8);
+            --deep-wine: #3a161b;
+            --deep-wine-hover: #5e252c;
+            --bg-dark: #121418;
+            --bg-darker: #0c0e12;
+            --bg-card: #16191f;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --white-5: rgba(255, 255, 255, 0.05);
+            --white-8: rgba(255, 255, 255, 0.08);
+            --white-10: rgba(255, 255, 255, 0.10);
+            --white-20: rgba(255, 255, 255, 0.20);
+            --white-3: rgba(255, 255, 255, 0.03);
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --text-main: #f1f1f1;
         }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--color-bg);
-            color: #f1f1f1;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.15em;
-        }
+        img { display: block; max-width: 100%; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-        .text-accent {
-            color: var(--color-accent);
-        }
-
-        .bg-accent {
-            background-color: var(--color-accent);
-        }
-
-        .bg-deep-wine {
-            background-color: var(--color-deep-wine);
-        }
-
-        .glass {
-            background: var(--color-glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+        /* =====================
+           Typography utilities
+        ===================== */
+        .font-cinzel { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
 
         .section-label {
             display: inline-block;
             padding: 3px 10px;
             font-size: 0.6rem;
             font-weight: 700;
-            color: var(--color-accent);
-            border: 1px solid var(--color-accent);
+            color: var(--accent);
+            border: 1px solid var(--accent);
             margin-bottom: 1rem;
             font-family: 'Cinzel', serif;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 0.2em;
         }
 
         .section-title {
@@ -75,137 +81,752 @@
             text-align: center;
         }
 
-        .body-text {
-            font-size: 0.85rem;
-            font-weight: 400;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 1.5rem;
         }
 
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 5.5rem;
-            }
+        .body-text { font-size: 0.85rem; font-weight: 400; }
 
-            .section-title {
-                font-size: 2rem;
-            }
+        /* =====================
+           Layout utilities
+        ===================== */
+        .section-py { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
 
-            .body-text {
-                font-size: 0.95rem;
-            }
+        .container-4xl { max-width: 56rem; margin-left: auto; margin-right: auto; }
+        .container-5xl { max-width: 64rem; margin-left: auto; margin-right: auto; }
+        .container-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; }
+        .container-3xl { max-width: 48rem; margin-left: auto; margin-right: auto; }
+
+        .text-center { text-align: center; }
+        .text-left  { text-align: left; }
+
+        .mb-1  { margin-bottom: 0.25rem; }
+        .mb-2  { margin-bottom: 0.5rem; }
+        .mb-4  { margin-bottom: 1rem; }
+        .mb-5  { margin-bottom: 1.25rem; }
+        .mb-6  { margin-bottom: 1.5rem; }
+        .mb-8  { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-14 { margin-bottom: 3.5rem; }
+        .mt-1  { margin-top: 0.25rem; }
+        .mt-2  { margin-top: 0.5rem; }
+        .mt-3  { margin-top: 0.75rem; }
+        .mt-4  { margin-top: 1rem; }
+        .mt-8  { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+        .pt-1  { padding-top: 0.25rem; }
+        .pt-6  { padding-top: 1.5rem; }
+        .pt-12 { padding-top: 3rem; }
+        .pb-4  { padding-bottom: 1rem; }
+        .pb-5  { padding-bottom: 1.25rem; }
+        .pb-6  { padding-bottom: 1.5rem; }
+        .py-6  { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .p-5   { padding: 1.25rem; }
+        .p-6   { padding: 1.5rem; }
+        .p-8   { padding: 2rem; }
+        .px-8  { padding-left: 2rem; padding-right: 2rem; }
+        .px-4  { padding-left: 1rem; padding-right: 1rem; }
+        .py-3  { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4  { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-5  { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        .px-3  { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-12 { padding-left: 3rem; padding-right: 3rem; }
+        .px-16 { padding-left: 4rem; padding-right: 4rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+
+        /* =====================
+           Color utilities
+        ===================== */
+        .text-accent  { color: var(--accent); }
+        .text-white   { color: #fff; }
+        .text-gray-300 { color: var(--gray-300); }
+        .text-gray-400 { color: var(--gray-400); }
+        .text-gray-500 { color: var(--gray-500); }
+        .text-gray-600 { color: var(--gray-600); }
+        .text-gray-700 { color: var(--gray-700); }
+
+        .bg-dark   { background-color: var(--bg-dark); }
+        .bg-darker { background-color: var(--bg-darker); }
+        .bg-card   { background-color: var(--bg-card); }
+        .bg-accent { background-color: var(--accent); }
+        .bg-deep-wine { background-color: var(--deep-wine); }
+
+        /* =====================
+           Component: Glass card
+        ===================== */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
         }
 
-        .section-py {
-            padding-top: 3.5rem;
-            padding-bottom: 3.5rem;
+        /* =====================
+           Component: Card
+        ===================== */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid var(--white-8);
+            overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-            .section-py {
-                padding-top: 5rem;
-                padding-bottom: 5rem;
-            }
+        .card-body { padding: 2rem; }
+
+        .card-header {
+            padding: 2rem 2rem 1.25rem;
+            border-bottom: 1px solid var(--white-8);
         }
 
-        html {
-            scroll-behavior: smooth;
+        /* =====================
+           Component: Badge
+        ===================== */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-border);
+            color: var(--accent);
+            font-size: 0.6875rem;
+            font-weight: 700;
         }
 
+        /* =====================
+           Component: Buttons
+        ===================== */
+        .btn-wine {
+            display: inline-block;
+            background-color: var(--deep-wine);
+            color: #fff;
+            padding: 1rem 3rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-wine:hover { background-color: var(--deep-wine-hover); }
+
+        .btn-accent {
+            display: block;
+            width: 100%;
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            padding: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 1.125rem;
+            border-radius: 2px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .btn-accent:hover { background-color: var(--accent-hover); }
+
+        /* =====================
+           Animation
+        ===================== */
         .animate-fade-in {
             animation: fadeIn 1s ease-out forwards;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        .br-pc {
-            display: none;
+        /* =====================
+           Utility: image cover
+        ===================== */
+        .img-cover {
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
-
-        @media (min-width: 768px) {
-            .br-pc {
-                display: inline;
-            }
-        }
-
         .visual-img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             border-radius: 0.75rem;
         }
+
+        /* =====================
+           Hero
+        ===================== */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem 2rem;
+            text-align: center;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 1;
+        }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 56rem;
+        }
+        .hero-lead {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            letter-spacing: 0.05em;
+        }
+        .hero-sub {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray-300);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .hero-cta-info { text-align: center; }
+        .hero-cta-date {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.6875rem;
+            color: #fff;
+            letter-spacing: 0.1em;
+        }
+        .hero-cta-venue {
+            font-size: 0.5625rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        /* =====================
+           Section: Pain Points
+        ===================== */
+        .painpoint-box {
+            background: var(--white-5);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--white-10);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .painpoint-box p {
+            font-weight: 700;
+            font-size: 0.9375rem;
+            color: #fff;
+            line-height: 1.8;
+        }
+        .accent-quote {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            background: linear-gradient(to right, var(--accent-dim), transparent);
+        }
+        .accent-quote p {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        /* =====================
+           Grid layouts
+        ===================== */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .grid-2-benefits { display: grid; grid-template-columns: 1fr; gap: 1rem; max-width: 56rem; margin-left: auto; margin-right: auto; }
+        .grid-2-recommended { display: grid; grid-template-columns: 1fr; gap: 0.75rem; max-width: 56rem; margin-left: auto; margin-right: auto; }
+
+        /* =====================
+           Component: Values card
+        ===================== */
+        .values-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-top: 2px solid var(--accent);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .values-card:hover { background: var(--white-5); }
+        .values-num {
+            font-family: 'Cinzel', serif;
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .values-title { font-weight: 700; font-size: 1.125rem; color: #fff; margin-bottom: 1rem; }
+        .values-body { font-size: 0.875rem; color: var(--gray-400); line-height: 1.8; margin-bottom: 1rem; }
+
+        /* =====================
+           Component: Benefit item
+        ===================== */
+        .benefit-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        .benefit-dot {
+            width: 0.625rem; height: 0.625rem;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+        .benefit-dot-glow {
+            box-shadow: 0 0 10px var(--accent-80);
+        }
+        .benefit-text { font-size: 0.8125rem; font-weight: 700; color: var(--gray-200, #e5e7eb); }
+        .benefit-text-highlight { color: #fff; font-size: 0.875rem; }
+
+        .benefit-closing {
+            text-align: center;
+            color: var(--gray-300);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            max-width: 42rem;
+            margin: 0 auto;
+            background: var(--white-5);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--white-5);
+        }
+
+        /* =====================
+           Component: Recommended item
+        ===================== */
+        .rec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--white-3);
+            border: 1px solid var(--accent-border-light);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+        }
+        .rec-dot {
+            width: 0.375rem; height: 0.375rem;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+        .rec-text { font-size: 0.8125rem; font-weight: 700; color: #e5e7eb; line-height: 1.4; }
+
+        /* =====================
+           Component: Timeline
+        ===================== */
+        .timeline {
+            position: relative;
+            border-left: 1px solid var(--accent-border);
+            margin-left: 0.5rem;
+            padding-bottom: 1rem;
+            text-align: left;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.75rem;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .tl-dot {
+            position: absolute;
+            border-radius: 50%;
+            left: -5px;
+            top: 6px;
+        }
+        .tl-dot-sm  { width: 0.5rem; height: 0.5rem; background: var(--gray-500); }
+        .tl-dot-md  { width: 0.625rem; height: 0.625rem; background: var(--gray-600); }
+        .tl-dot-lg  {
+            width: 0.75rem; height: 0.75rem;
+            background: var(--accent);
+            left: -7px; top: 8px;
+            box-shadow: 0 0 15px var(--accent-80);
+        }
+        .tl-dot-meal {
+            width: 0.625rem; height: 0.625rem;
+            background: var(--accent);
+            left: -6px; top: 6px;
+            box-shadow: 0 0 10px rgba(179,139,77,0.5);
+        }
+
+        .tl-time-gray {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6875rem;
+            color: var(--gray-500);
+            margin-bottom: 0.125rem;
+        }
+        .tl-time-accent {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        .tl-label {
+            font-size: 0.6250rem;
+            font-family: 'Cinzel', serif;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .tl-card {
+            background: var(--white-5);
+            border: 1px solid var(--white-10);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .tl-card-wine { background: var(--deep-wine); }
+        .tl-card-bar {
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+        }
+        .tl-card-bar-dim  { background: rgba(179,139,77,0.6); }
+        .tl-card-bar-full { background: var(--accent); }
+
+        .tl-card-title { font-size: 0.875rem; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 0.5rem; }
+        .tl-card-body  { font-size: 0.75rem; color: var(--gray-400); line-height: 1.8; }
+        .tl-card-end   { font-size: 0.6875rem; color: var(--accent-70); margin-top: 0.75rem; font-family: 'Cinzel', serif; }
+
+        .tl-break-title { font-size: 0.875rem; font-weight: 700; color: var(--gray-500); }
+        .tl-break-sub   { font-size: 0.6875rem; color: var(--gray-600); margin-top: 0.125rem; }
+
+        .tl-end-title { font-size: 0.875rem; font-weight: 700; color: var(--gray-300); }
+        .tl-end-sub   { font-size: 0.6875rem; color: var(--gray-500); margin-top: 0.125rem; }
+
+        /* =====================
+           Next Sessions cards
+        ===================== */
+        .sessions-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .session-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .session-card-active { border-color: var(--accent-border); }
+        .session-month { font-size: 1.125rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
+        .session-date  { font-size: 0.6875rem; color: var(--gray-500); font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .session-title { font-size: 0.875rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+        .session-time  { font-size: 0.625rem; color: var(--accent-80); font-family: 'Cinzel', serif; margin-bottom: 0.5rem; }
+        .session-desc  { font-size: 0.625rem; color: var(--gray-500); line-height: 1.6; }
+
+        /* =====================
+           Collab section layout
+        ===================== */
+        .collab-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+
+        /* =====================
+           Info table
+        ===================== */
+        .info-table {
+            background: var(--glass-bg);
+            border: 1px solid var(--white-10);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+        }
+        .info-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label {
+            padding: 1.25rem;
+            background: var(--white-5);
+            color: var(--accent);
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+        }
+        .info-value {
+            padding: 1.25rem;
+            color: var(--gray-200, #e5e7eb);
+        }
+        .info-value-title { font-weight: 700; font-size: 0.875rem; }
+        .info-value-sub   { font-size: 0.6875rem; color: var(--gray-400); font-weight: 400; }
+
+        /* =====================
+           Map
+        ===================== */
+        .map-label {
+            font-family: 'Cinzel', serif;
+            color: var(--gray-600);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .map-wrap {
+            width: 100%;
+            background: var(--white-5);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--white-10);
+            aspect-ratio: 16/9;
+            max-height: 350px;
+        }
+        .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+        /* =====================
+           Message section
+        ===================== */
+        .message-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .message-bg-img {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+        }
+        .message-bg-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .closing-border {
+            border-top: 1px solid var(--white-20);
+            padding-top: 3rem;
+            text-align: center;
+        }
+
+        /* =====================
+           Footer
+        ===================== */
+        footer {
+            padding: 3rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--gray-700);
+            font-family: 'Cinzel', serif;
+            font-size: 0.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* =====================
+           Theme badge strip
+        ===================== */
+        .theme-strip {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-border-mid);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 20px rgba(179,139,77,0.1);
+            text-align: center;
+        }
+        .theme-strip-label {
+            font-size: 0.6875rem;
+            font-family: 'Cinzel', serif;
+            color: var(--accent-70);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .theme-strip-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 2rem;
+            margin-top: 0.75rem;
+        }
+        .theme-strip-badges span { font-size: 0.75rem; color: var(--gray-300); }
+
+        /* =====================
+           Collab photo + card
+        ===================== */
+        .collab-photo {
+            aspect-ratio: 16/9;
+            background: var(--white-5);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--white-10);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .collab-about {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid var(--white-8);
+            padding: 1.5rem;
+        }
+        .collab-about-header {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--white-10);
+        }
+        .collab-about-title { font-weight: 700; font-size: 1.125rem; color: #fff; margin-top: 0.75rem; }
+        .collab-about-body  { font-size: 0.8125rem; color: var(--gray-400); line-height: 1.8; }
+        .collab-about-body p + p { margin-top: 1rem; }
+        .collab-catchphrase { color: var(--accent); font-weight: 700; margin-top: 0.25rem; }
+
+        /* =====================
+           Responsive — md (768px+)
+        ===================== */
+        @media (min-width: 768px) {
+            .section-py { padding-top: 5rem; padding-bottom: 5rem; }
+
+            .hero-title  { font-size: 5.5rem; }
+            .section-title { font-size: 2rem; }
+            .body-text   { font-size: 0.95rem; }
+
+            .hero-lead   { font-size: 1.5rem; }
+            .hero-sub    { font-size: 1rem; }
+            .hero-cta    { flex-direction: row; }
+            .hero-cta-info {
+                text-align: left;
+                border-left: 1px solid var(--gray-600);
+                padding-left: 1.5rem;
+            }
+            .hero-cta-venue { text-align: left; }
+
+            .btn-wine { width: auto; }
+
+            .painpoint-box p { font-size: 1.125rem; }
+
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-2-benefits { grid-template-columns: 1fr 1fr; }
+            .grid-2-recommended { grid-template-columns: 1fr 1fr 1fr; }
+            .benefit-last { grid-column: 1 / -1; max-width: 66.666%; margin-left: auto; margin-right: auto; width: 100%; }
+
+            .sessions-grid { grid-template-columns: repeat(3, 1fr); }
+            .collab-grid   { grid-template-columns: 1fr 1fr; align-items: start; }
+
+            .info-row { grid-template-columns: 1fr 2fr; }
+            .info-label { text-align: center; }
+            .info-value-title { text-align: left; }
+
+            .card-header { padding: 2rem 2rem 1.25rem; }
+            .card-body   { padding: 1.5rem 2rem; }
+
+            .collab-about { padding: 2rem; }
+        }
+
+        /* =====================
+           sm (640px) – 2-col recommended
+        ===================== */
+        @media (min-width: 640px) and (max-width: 767px) {
+            .grid-2-recommended { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* =====================
+           Misc helpers
+        ===================== */
+        .hidden-md { display: block; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .leading-relaxed { line-height: 1.8; }
+        .leading-snug    { line-height: 1.4; }
+        .leading-loose   { line-height: 2; }
+        .font-bold { font-weight: 700; }
+        .relative { position: relative; }
+        .overflow-hidden { overflow: hidden; }
     </style>
 </head>
 
-<body class="antialiased">
+<body>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-[90vh] flex items-center justify-center pt-10 pb-8 px-6 text-center">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-black/75 z-10"></div>
-            <!-- 背景画像1: メインビジュアル -->
-            <img src="scott-warman-rrYF1RfotSM-unsplash.jpg" alt="トップ背景画像" class="w-full h-full object-cover">
+    <!-- ===================== Hero ===================== -->
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+            <img src="kenbisyoku_top.jpg" alt="トップ背景画像" class="img-cover">
         </div>
-        <div class="relative z-20 max-w-4xl animate-fade-in">
+        <div class="hero-content animate-fade-in">
             <span class="section-label">KEN-BI-SHOKU PROJECT</span>
-            <h1 class="hero-title mb-6 text-white uppercase text-center">
-                健美食
-            </h1>
+            <h1 class="hero-title">健美食</h1>
 
-            <div class="mb-8 md:mb-12 text-center">
-                <p class="text-base md:text-2xl font-bold text-white mb-4 leading-tight tracking-wider">
+            <div class="mb-8">
+                <p class="hero-lead">
                     学ぶだけで終わらない。<br>次の一歩が見えてくる場へ。
                 </p>
-                <p class="text-[12px] md:text-base font-medium text-gray-300 mb-6 leading-relaxed">
+                <p class="hero-sub">
                     やりたいことはある。でも、ひとりで考えていると動けなくなる。<br>
                     だからこそ健美食は、知識を増やすだけでなく、考えを整理し、<br>
                     「これならやってみたい」と思えるきっかけに出会う場をつくっています。
                 </p>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="#booking"
-                    class="w-full md:w-auto bg-deep-wine hover:bg-[#5e252c] text-white px-12 py-4 rounded-sm font-bold transition-all shadow-xl tracking-widest text-sm text-center">
-                    参加する
-                </a>
-                <div class="text-center md:text-left md:border-l border-gray-600 md:pl-6">
-                    <p class="text-[11px] font-cinzel font-bold text-white tracking-widest">2026.05.17 SUN</p>
-                    <p class="text-[9px] text-gray-500 font-medium mt-1 uppercase text-center md:text-left">Osaka
-                        Miyakojima | Cafe JIN</p>
+            <div class="hero-cta">
+                <a href="#booking" class="btn-wine" style="width:100%;max-width:20rem;">参加する</a>
+                <div class="hero-cta-info">
+                    <p class="hero-cta-date">2026.06.21 SUN</p>
+                    <p class="hero-cta-venue">Osaka Miyakojima | Cafe JIN</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 1. 共感・問題提起 -->
-    <section class="section-py px-6 bg-[#0c0e12]">
-        <div class="max-w-4xl mx-auto">
+    <!-- ===================== 1. Pain Points ===================== -->
+    <section class="section-py px-6 bg-darker">
+        <div class="container-4xl">
             <div class="text-center mb-10">
                 <span class="section-label">Pain Points</span>
                 <h2 class="section-title mb-8 text-white">なぜ人は立ち止まってしまうのか？</h2>
             </div>
 
-            <div class="body-text text-gray-300 space-y-6 leading-loose text-left max-w-3xl mx-auto">
-                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 shadow-lg text-center mb-10">
-                    <p class="text-white font-bold text-[15px] md:text-lg leading-relaxed">
-                        今の仕事をもっと広げたい。<br>自分のスキルを、目の前のクライアントだけで終わらせたくない。<br>企業や地域にも役立てていきたい。
-                    </p>
+            <div class="body-text text-gray-300 space-y-6 leading-loose text-left" style="max-width:48rem;margin:0 auto;">
+                <div class="painpoint-box">
+                    <p>今の仕事をもっと広げたい。<br>自分のスキルを、目の前のクライアントだけで終わらせたくない。<br>企業や地域にも役立てていきたい。</p>
                 </div>
-
                 <p>そう思っていても、実際には動けなくなることがあります。</p>
                 <p>なぜなら、やりたい気持ちがあっても、考えが整理できていなかったり、何から始めればいいのかわからなかったりすると、人は自然と立ち止まってしまうからです。</p>
                 <p>さらに、ひとりで考え続けていると、視点が広がらず、同じところで悩み続けてしまうことも少なくありません。</p>
-
-                <div class="mt-8 border-l-2 border-accent pl-6 py-2 bg-gradient-to-r from-accent/10 to-transparent">
-                    <p class="text-white font-bold text-lg leading-relaxed">
+                <div class="accent-quote">
+                    <p>
                         だから必要なのは、新しい知識だけではなく、<br>
                         考えが整理され、視点が広がり、<br>
                         <span class="text-accent">「少しやってみよう」と思える状態になること</span>です。
@@ -215,464 +836,347 @@
         </div>
     </section>
 
-    <!-- 2. このイベントでできること -->
-    <section class="section-py px-6 relative overflow-hidden bg-[#121418]">
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <img src="photo2.jpg" class="w-full h-full object-cover">
+    <!-- ===================== 2. Concept ===================== -->
+    <section class="section-py px-6 bg-dark relative overflow-hidden">
+        <div style="position:absolute;inset:0;opacity:0.10;pointer-events:none;">
+            <img src="photo2.jpg" class="img-cover" alt="">
         </div>
-        <div class="max-w-4xl mx-auto relative z-10">
+        <div class="container-4xl relative" style="z-index:1;">
             <div class="text-center mb-10">
                 <span class="section-label">Concept</span>
                 <h2 class="section-title text-white">このイベントでできること</h2>
             </div>
-
-            <div class="glass p-8 md:p-12 rounded-2xl border border-accent/20">
-                <div class="text-gray-300 body-text leading-loose text-center md:text-left space-y-6">
-                    <p class="text-white font-bold text-lg md:text-xl text-center mb-6">健美食は、ただ話を聞いて終わる場ではありません。</p>
-                    <p>自分の考えを整理し、他の参加者との対話を通じて視点を広げ、次に向けたヒントを持ち帰るための時間です。</p>
-                    <p>それが大切なのは、人は<span class="text-accent font-bold px-1">“正しい情報”</span>だけでは動き出せず、<span
-                            class="text-accent font-bold px-1">“自分に結びついた気づき”</span>があって初めて、前に進みやすくなるからです。</p>
-                </div>
+            <div class="glass p-8 leading-loose text-left space-y-6" style="border-radius:1rem;border-color:var(--accent-border-light);">
+                <p class="font-bold text-white text-center" style="font-size:1.125rem;">健美食は、ただ話を聞いて終わる場ではありません。</p>
+                <p class="body-text text-gray-300">自分の考えを整理し、他の参加者との対話を通じて視点を広げ、次に向けたヒントを持ち帰るための時間です。</p>
+                <p class="body-text text-gray-300">それが大切なのは、人は<strong style="color:var(--accent);padding:0 0.25rem;">"正しい情報"</strong>だけでは動き出せず、<strong style="color:var(--accent);padding:0 0.25rem;">"自分に結びついた気づき"</strong>があって初めて、前に進みやすくなるからです。</p>
             </div>
         </div>
     </section>
 
-    <!-- 3. この場で大切にしていること -->
-    <section class="section-py px-6 bg-[#0c0e12]">
-        <div class="max-w-6xl mx-auto">
+    <!-- ===================== 3. Values ===================== -->
+    <section class="section-py px-6 bg-darker">
+        <div class="container-6xl">
             <div class="text-center mb-12">
                 <span class="section-label">Values</span>
                 <h2 class="section-title text-white">この場で大切にしていること</h2>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div
-                    class="glass p-8 rounded-2xl text-left border-t-2 border-accent hover:bg-white/5 transition-colors">
-                    <div class="text-accent text-3xl font-cinzel font-bold mb-4">01</div>
-                    <h3 class="text-white font-bold text-lg mb-4">知るだけで終わらせない</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
-                        いい話を聞いて、その場では納得したのに、日常に戻ると元に戻ってしまう。それは、理解したことと、実際にできることの間に思っている以上の距離があるからです。</p>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        だから健美食では、「何を学ぶか」だけでなく、「自分ならどう活かせるか」まで考える時間を大切にしています。学びを現実に近づけることで、“いい話”ではなく、“使えるヒント”として持ち帰れるようにしています。
-                    </p>
+            <div class="grid-3">
+                <div class="values-card">
+                    <div class="values-num font-cinzel">01</div>
+                    <h3 class="values-title">知るだけで終わらせない</h3>
+                    <p class="values-body">いい話を聞いて、その場では納得したのに、日常に戻ると元に戻ってしまう。それは、理解したことと、実際にできることの間に思っている以上の距離があるからです。</p>
+                    <p class="values-body">だから健美食では、「何を学ぶか」だけでなく、「自分ならどう活かせるか」まで考える時間を大切にしています。学びを現実に近づけることで、"いい話"ではなく、"使えるヒント"として持ち帰れるようにしています。</p>
                 </div>
-
-                <div
-                    class="glass p-8 rounded-2xl text-left border-t-2 border-accent hover:bg-white/5 transition-colors">
-                    <div class="text-accent text-3xl font-cinzel font-bold mb-4">02</div>
-                    <h3 class="text-white font-bold text-lg mb-4">ひとりでは出てこない発想に<br class="br-pc">出会う</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
-                        やりたいことがあっても、ひとりで考え続けていると、発想が広がらなかったり、自信が持てなかったりします。なぜなら、人は自分の経験の中だけで考えるほど、視点が固定されやすくなるからです。</p>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        だからこの場では、さまざまな立場や経験を持つ人と交わることで、新しい見方やアイデアに出会えることを大切にしています。それによって、止まっていた考えが少し動き出します。</p>
+                <div class="values-card">
+                    <div class="values-num font-cinzel">02</div>
+                    <h3 class="values-title">ひとりでは出てこない発想に出会う</h3>
+                    <p class="values-body">やりたいことがあっても、ひとりで考え続けていると、発想が広がらなかったり、自信が持てなかったりします。なぜなら、人は自分の経験の中だけで考えるほど、視点が固定されやすくなるからです。</p>
+                    <p class="values-body">だからこの場では、さまざまな立場や経験を持つ人と交わることで、新しい見方やアイデアに出会えることを大切にしています。それによって、止まっていた考えが少し動き出します。</p>
                 </div>
-
-                <div
-                    class="glass p-8 rounded-2xl text-left border-t-2 border-accent hover:bg-white/5 transition-colors">
-                    <div class="text-accent text-3xl font-cinzel font-bold mb-4">03</div>
-                    <h3 class="text-white font-bold text-lg mb-4">今の仕事を、次の広がりにつなげる</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
-                        今向き合っている仕事は大切。そのうえで、そこから先へどう広げていくかを考えることも重要です。なぜなら、目の前の仕事だけに集中していると、本来活かせるはずのスキルや可能性が、限られた範囲で止まってしまうからです。
-                    </p>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        だから健美食では、企業や地域との関わり方や、仕事の広げ方のヒントに触れる機会をつくっています。それは活動の幅を増やすためではなく、自分の価値を、より必要とされる場所へ届けるためです。</p>
+                <div class="values-card">
+                    <div class="values-num font-cinzel">03</div>
+                    <h3 class="values-title">今の仕事を、次の広がりにつなげる</h3>
+                    <p class="values-body">今向き合っている仕事は大切。そのうえで、そこから先へどう広げていくかを考えることも重要です。なぜなら、目の前の仕事だけに集中していると、本来活かせるはずのスキルや可能性が、限られた範囲で止まってしまうからです。</p>
+                    <p class="values-body">だから健美食では、企業や地域との関わり方や、仕事の広げ方のヒントに触れる機会をつくっています。それは活動の幅を増やすためではなく、自分の価値を、より必要とされる場所へ届けるためです。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. 参加することで得られること -->
-    <section class="section-py px-6 bg-[#121418]">
-        <div class="max-w-5xl mx-auto">
+    <!-- ===================== Image Break ===================== -->
+    <div style="width:100%;position:relative;">
+        <img src="kenbisyoku_image1.jpg" alt="" style="width:100%;height:auto;display:block;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,14,18,0.25) 0%,transparent 20%,transparent 80%,rgba(18,20,24,0.35) 100%);pointer-events:none;"></div>
+    </div>
+
+    <!-- ===================== 4. Benefits ===================== -->
+    <section class="section-py px-6 bg-dark">
+        <div class="container-5xl">
             <div class="text-center mb-10">
                 <span class="section-label">Benefits</span>
                 <h2 class="section-title text-white">参加することで得られること</h2>
             </div>
-
-            <p class="text-gray-300 text-center mb-10 text-sm md:text-base">
-                このイベントは、情報を増やすことが目的ではありません。<br>参加することで、たとえばこんな変化が生まれます。</p>
-
-            <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-10">
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">自分の考えが整理される</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">今の仕事の延長線上にある可能性が見えてくる</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">企業や地域との関わり方のヒントが見つかる</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">ひとりでは思いつかなかった発想に出会える</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">必要な人・情報・機会との接点が生まれる</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 text-left">
-                    <div class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0"></div>
-                    <span class="text-gray-200 text-[13px] md:text-sm font-bold">「何をしたらいいかわからない」が少し具体的になる</span>
-                </div>
-                <div class="glass p-5 rounded-xl flex items-center gap-4 md:col-span-2 md:mx-auto md:w-2/3 text-left">
-                    <div
-                        class="w-2.5 h-2.5 rounded-full bg-accent flex-shrink-0 shadow-[0_0_10px_rgba(179,139,77,0.8)]">
-                    </div>
-                    <span class="text-white text-[14px] md:text-base font-bold">やってみたいことが現実に近づく</span>
-                </div>
+            <p class="text-gray-300 text-center mb-10 body-text">
+                このイベントは、情報を増やすことが目的ではありません。<br>参加することで、たとえばこんな変化が生まれます。
+            </p>
+            <div class="grid-2-benefits mb-10">
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">自分の考えが整理される</span></div>
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">今の仕事の延長線上にある可能性が見えてくる</span></div>
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">企業や地域との関わり方のヒントが見つかる</span></div>
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">ひとりでは思いつかなかった発想に出会える</span></div>
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">必要な人・情報・機会との接点が生まれる</span></div>
+                <div class="benefit-item"><div class="benefit-dot"></div><span class="benefit-text">「何をしたらいいかわからない」が少し具体的になる</span></div>
+                <div class="benefit-item benefit-last"><div class="benefit-dot benefit-dot-glow"></div><span class="benefit-text benefit-text-highlight">やってみたいことが現実に近づく</span></div>
             </div>
-
-            <div
-                class="text-center text-gray-300 text-sm leading-relaxed max-w-2xl mx-auto bg-white/5 p-6 rounded-2xl border border-white/5">
-                <p>これらを大切にしているのは、その場の満足感ではなく、<br class="hidden md:block">終わったあとに小さな変化が残ることが重要だからです。</p>
-                <p class="font-bold text-accent text-base mt-4">「来てよかった」で終わるのではなく、<br>「これをやってみよう」が残る場を目指しています。</p>
+            <div class="benefit-closing">
+                <p>これらを大切にしているのは、その場の満足感ではなく、<br>終わったあとに小さな変化が残ることが重要だからです。</p>
+                <p class="font-bold text-accent" style="font-size:1rem;margin-top:1rem;">「来てよかった」で終わるのではなく、<br>「これをやってみよう」が残る場を目指しています。</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. 今回のテーマ & この時間で目指すこと -->
-    <section class="section-py px-6 bg-[#0c0e12]">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Theme -->
-                <div class="bg-[#121418] p-8 md:p-10 rounded-3xl border border-white/5">
-                    <div class="mb-8 border-b border-white/10 pb-6">
-                        <span class="section-label">Theme</span>
-                        <h2 class="text-white text-lg mt-2 mb-2">今回のテーマ</h2>
-                        <h3 class="text-accent font-bold text-xl md:text-2xl leading-tight">構造で、動きやすさは変えられる。</h3>
-                    </div>
-                    <div class="text-gray-300 text-sm leading-relaxed space-y-4 text-left">
-                        <p>やろうと思っているのに続かない。必要だとわかっているのに後回しになる。それは、気持ちの問題ではないかもしれません。</p>
-                        <p>なぜなら、人が動けるかどうかは、意志の強さだけではなく、環境や習慣、考え方の流れに大きく影響されるからです。</p>
-                        <p>だから今回の健美食では、「頑張ること」に頼るのではなく、どうすれば無理なく動きやすくなるのか、どうすれば続けやすい形をつくれるのかを考えていきます。</p>
-                        <p class="font-bold text-white pt-2">この視点が大切なのは、変われないときに自分を責めるのではなく、やり方を見直せるようになるからです。</p>
-                    </div>
-                </div>
-                <!-- Goals -->
-                <div class="bg-[#121418] p-8 md:p-10 rounded-3xl border border-white/5">
-                    <div class="mb-8 border-b border-white/10 pb-6">
-                        <span class="section-label">Goals</span>
-                        <h2 class="text-white text-lg mt-2 mb-2">この時間で目指すこと</h2>
-                        <h3 class="text-accent font-bold text-xl md:text-2xl leading-tight">大きく変えるのではなく、<br>動きやすくなること。
-                        </h3>
-                    </div>
-                    <div class="text-gray-300 text-sm leading-relaxed space-y-4 text-left">
-                        <p>このイベントで目指しているのは、その場だけ気持ちが高まることではありません。</p>
-                        <p>なぜなら、一時的に気持ちが上がっても、日常に戻ったときに何も変わらなければ、現実は動かないからです。<br>だからこそ、</p>
+    <!-- ===================== 5-7. Collaboration / Theme / Schedule ===================== -->
+    <section class="section-py px-6 bg-darker">
+        <div class="container-5xl">
 
-                        <div class="bg-white/5 p-5 rounded-xl border border-white/5 my-4">
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-white font-bold">頭の中が整理される</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-white font-bold">できていなかった理由を冷静に見直せる</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-white font-bold">明日から意識することがひとつ見つかる</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-white font-bold">自分の仕事に落とし込むヒントが得られる</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <p>そんな状態になることを目指しています。<br>それが結果的に変化を続きやすくします。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. こんな方におすすめです -->
-    <section class="section-py px-6 bg-[#121418]">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-10">
-                <span class="section-label">Recommended for</span>
-                <h2 class="section-title text-white">こんな方におすすめです</h2>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto mb-10">
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">今の仕事をもっと広げたい方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">自分のスキルを企業や地域にも活かしたい方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">やりたいことはあるが、形にできていない方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">ひとりで考えていると煮詰まりやすい方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">新しい視点や出会いがほしい方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">学びを実際の行動につなげたい方</span>
-                <span
-                    class="px-5 py-2.5 rounded-full border border-accent/40 text-gray-200 text-[13px] md:text-sm bg-accent/5 hover:bg-accent/10 transition-colors font-bold">次の一歩のきっかけがほしい方</span>
-            </div>
-
-            <div class="text-center text-gray-300 text-sm md:text-base leading-relaxed">
-                <p>こうした方におすすめなのは、この場が“答えを受け取る場所”ではなく、<br><span
-                        class="text-accent text-lg font-bold mt-2 inline-block shadow-sm">“前に進みやすくなる場所”</span><br>だからです。
+            <!-- ヘッダー -->
+            <div class="text-center mb-14">
+                <span class="section-label">Collaboration × Theme</span>
+                <h2 class="section-title text-white mt-4">パーソナルトレーナーの寺子屋<span class="text-accent"> × 健美食</span></h2>
+                <p class="text-gray-400 body-text leading-relaxed" style="max-width:42rem;margin:1rem auto 0;">
+                    ボディワークと食・栄養の専門家が交わる、コラボ開催回。<br>
+                    今回のテーマは <strong style="color:var(--accent);">「整える」</strong>。体・食・心のそれぞれの視点から、整えることを一緒に深めます。
                 </p>
             </div>
+
+            <!-- Theme & Goals -->
+            <div class="grid-2 mb-14">
+                <!-- Theme -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="section-label">Theme</span>
+                        <p class="text-gray-400" style="font-size:0.75rem;margin-top:0.5rem;margin-bottom:0.25rem;">今回のテーマ</p>
+                        <h3 class="font-cinzel font-bold text-accent" style="font-size:2.25rem;line-height:1.2;letter-spacing:0.1em;">「整える」</h3>
+                    </div>
+                    <div class="card-body text-gray-400 leading-relaxed space-y-4" style="font-size:0.875rem;">
+                        <p>体が整っていないと、食も心も乱れやすくなる。逆に食が整うと、体のコンディションが変わる。心が落ち着いていると、行動の質も変わる。</p>
+                        <p>「整える」とは、特定の一つを頑張ることではなく、<strong class="text-white">体・食・心のバランスを見直し、自分が動きやすい状態をつくること</strong>です。</p>
+                        <p>パーソナルトレーナーと食の専門家がそれぞれの現場の視点から語ることで、ひとりでは気づけなかった視点が生まれます。</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;padding-top:0.5rem;">
+                            <span class="badge">体 ▸ 皮膚ストレッチング</span>
+                            <span class="badge">食 ▸ 健美食</span>
+                            <span class="badge">心 ▸ トータルウェルネス</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goals -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="section-label">Goals</span>
+                        <p class="text-gray-400" style="font-size:0.75rem;margin-top:0.5rem;margin-bottom:0.25rem;">この時間で持ち帰れること</p>
+                        <h3 class="font-bold text-white leading-snug" style="font-size:1.125rem;">体・食・心から「整える」を、<br><span class="text-accent">自分の現場で活かす形に。</span></h3>
+                    </div>
+                    <ul class="card-body space-y-4">
+                        <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                            <svg style="width:1rem;height:1rem;color:var(--accent);flex-shrink:0;margin-top:0.125rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-gray-300" style="font-size:0.875rem;line-height:1.8;">皮膚ストレッチングを通して<strong class="text-white">「身体を整える」</strong>視点を得る</span>
+                        </li>
+                        <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                            <svg style="width:1rem;height:1rem;color:var(--accent);flex-shrink:0;margin-top:0.125rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-gray-300" style="font-size:0.875rem;line-height:1.8;">体・食・心を包括した<strong class="text-white">トータルウェルネス</strong>の考え方を理解する</span>
+                        </li>
+                        <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                            <svg style="width:1rem;height:1rem;color:var(--accent);flex-shrink:0;margin-top:0.125rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-gray-300" style="font-size:0.875rem;line-height:1.8;">自分の専門性と「整える」を<strong class="text-white">どうつなげるかのヒント</strong>を得る</span>
+                        </li>
+                        <li style="display:flex;align-items:flex-start;gap:0.75rem;">
+                            <svg style="width:1rem;height:1rem;color:var(--accent);flex-shrink:0;margin-top:0.125rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-gray-300" style="font-size:0.875rem;line-height:1.8;">異なるコミュニティの専門家と交わることで<strong class="text-white">新しい視点</strong>を持ち帰る</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- こんな方におすすめ -->
+            <div class="mb-14">
+                <div class="text-center mb-8">
+                    <span class="section-label">Recommended for</span>
+                    <h2 class="section-title text-white mt-3">こんな方におすすめです</h2>
+                </div>
+                <div class="grid-2-recommended mb-8">
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">体のことを仕事にしている<br>トレーナー・インストラクター</span></div>
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">食や栄養に関わる<br>仕事をしている方</span></div>
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">「整える」に専門外の<br>視点も加えたい方</span></div>
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">クライアントへのアプローチの<br>幅を広げたい方</span></div>
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">異なるコミュニティの人と<br>交わりたい方</span></div>
+                    <div class="rec-item"><div class="rec-dot"></div><span class="rec-text">学びを食事しながら<br>気軽に深めたい方</span></div>
+                </div>
+                <p class="text-center text-gray-400 body-text">それぞれの専門性を持ち寄ることで、<strong style="color:var(--accent);">"ひとりでは気づけなかった視点"</strong> が生まれます。</p>
+            </div>
+
+            <!-- タイムライン & コラボ紹介 -->
+            <div>
+                <div class="text-center mb-10">
+                    <span class="section-label">Program & Timeline</span>
+                    <h2 class="section-title text-white mt-3">当日のスケジュール</h2>
+                </div>
+
+                <div class="collab-grid">
+                    <!-- タイムライン -->
+                    <div class="timeline">
+                        <!-- 受付 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-sm"></div>
+                            <div class="tl-time-gray">13:45</div>
+                            <h3 class="text-gray-400 font-bold" style="font-size:0.875rem;">受付開始</h3>
+                        </div>
+                        <!-- Part 1 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-lg"></div>
+                            <div class="tl-time-accent">14:00</div>
+                            <div class="tl-card">
+                                <div class="tl-card-bar tl-card-bar-dim"></div>
+                                <p class="tl-label">寺子屋勉強会 Part 1</p>
+                                <h3 class="tl-card-title">皮膚ストレッチングで身体を整える</h3>
+                                <p class="tl-card-body">皮膚へのアプローチから身体の整え方を学ぶ。パーソナルトレーナーの視点から、指導に活かせる実践的な内容を届けます。</p>
+                                <p class="tl-card-end">〜 15:45</p>
+                            </div>
+                        </div>
+                        <!-- Part 2 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-lg"></div>
+                            <div class="tl-time-accent">15:45</div>
+                            <div class="tl-card">
+                                <div class="tl-card-bar tl-card-bar-full"></div>
+                                <p class="tl-label">寺子屋勉強会 Part 2</p>
+                                <h3 class="tl-card-title">体・食・心のトータルウェルネス</h3>
+                                <p class="tl-card-body">身体だけでなく、食と心も含めたトータルな「整える」を考える。複数の視点を掛け合わせて、より深いウェルネスのアプローチを探ります。</p>
+                                <p class="tl-card-end">〜 17:15</p>
+                            </div>
+                        </div>
+                        <!-- 休憩 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-md"></div>
+                            <div class="tl-time-gray">17:15</div>
+                            <h3 class="tl-break-title">休憩</h3>
+                            <p class="tl-break-sub">〜 18:00</p>
+                        </div>
+                        <!-- 食事＆交流会 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-meal"></div>
+                            <div class="tl-time-accent">18:00</div>
+                            <div class="tl-card">
+                                <h3 class="tl-card-title">食事 ＆ 交流会</h3>
+                                <p class="tl-card-body">学んだことを話しながら食べる。寺子屋と健美食のメンバーが混ざる時間。</p>
+                                <p class="tl-card-end">〜 20:00</p>
+                            </div>
+                        </div>
+                        <!-- 終了 -->
+                        <div class="timeline-item">
+                            <div class="tl-dot tl-dot-md"></div>
+                            <div class="tl-time-gray">20:00</div>
+                            <h3 class="tl-end-title">終了</h3>
+                            <p class="tl-end-sub">会場は 21:00 まで利用可能</p>
+                        </div>
+                    </div>
+
+                    <!-- コラボ紹介 -->
+                    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                        <div class="collab-photo">
+                            <img src="kenbisyoku_image2.jpg" alt="Event Visual" class="visual-img">
+                        </div>
+                        <div class="collab-about">
+                            <div class="collab-about-header">
+                                <span class="section-label">About Collaboration</span>
+                                <h2 class="collab-about-title">コラボが生まれる理由</h2>
+                            </div>
+                            <div class="collab-about-body">
+                                <p>パーソナルトレーナーの寺子屋は、身体の専門家たちが集まり実践的な学びを深めるコミュニティです。</p>
+                                <p>健美食は、食と健康を軸に専門家同士がつながり・学び・広がる場をつくっています。</p>
+                                <p><strong class="text-white">「体を整える」と「食で整える」——</strong>それぞれの専門性が重なることで、クライアントへのアプローチがより立体的になります。</p>
+                                <p class="collab-catchphrase">混ざることで、見えてくることがある。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- 7 & 8. 当日の内容 & スケジュール -->
-    <section class="section-py px-6 bg-[#0c0e12]">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-10">
-                <span class="section-label">Program & Timeline</span>
-                <h2 class="section-title text-white">当日の内容・スケジュール</h2>
-            </div>
 
-            <!-- テーマ帯 -->
-            <div
-                class="bg-accent/10 border border-accent/40 rounded-xl p-5 mb-10 shadow-[0_0_20px_rgba(179,139,77,0.1)] text-center">
-                <p class="text-[14px] md:text-lg font-bold text-white tracking-wide">第3回のテーマ：<span
-                        class="text-accent">行動が変わる構造について</span></p>
-                <div class="mt-3 text-left max-w-sm mx-auto space-y-1">
-                    <p class="text-[12px] text-gray-300">① 意志に頼らない考え方を知る</p>
-                    <p class="text-[12px] text-gray-300">② 行動が生まれる仕組みを理解する</p>
-                    <p class="text-[12px] text-gray-300">③ 翌日から実践できる形に落とし込む</p>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <!-- Timeline -->
-                <div class="relative border-l border-accent/30 ml-2 space-y-8 pb-4 text-left">
-                    <div class="relative pl-8">
-                        <div class="absolute w-2 h-2 bg-gray-500 rounded-full -left-[5px] top-1.5"></div>
-                        <div class="text-[11px] font-cinzel text-gray-500 mb-0.5">17:30</div>
-                        <h3 class="text-sm font-bold text-gray-300">受付開始</h3>
-                    </div>
-                    <div class="relative pl-8">
-                        <div
-                            class="absolute w-2.5 h-2.5 bg-accent rounded-full -left-[6px] top-1.5 shadow-[0_0_10px_rgba(179,139,77,0.5)]">
-                        </div>
-                        <div class="text-[12px] font-cinzel text-accent mb-0.5 font-bold">18:00</div>
-                        <h3 class="text-sm font-bold text-white">オープニング</h3>
-                    </div>
-                    <!-- Group Work -->
-                    <div class="relative pl-8">
-                        <div
-                            class="absolute w-3 h-3 bg-accent rounded-full -left-[7px] top-2 shadow-[0_0_15px_rgba(179,139,77,1)]">
-                        </div>
-                        <div class="text-[12px] font-cinzel text-accent mb-1 font-bold">18:15</div>
-                        <div
-                            class="bg-deep-wine/40 border border-accent/30 p-5 rounded-xl shadow-xl relative overflow-hidden">
-                            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-accent"></div>
-                            <span class="text-[10px] text-accent font-bold tracking-widest uppercase block mb-1">Group
-                                Work</span>
-                            <h3 class="text-base font-bold text-white leading-tight mb-1">行動が変わる構造について</h3>
-                            <p class="text-[11px] text-gray-400 leading-relaxed">
-                                意志に頼らない考え方・行動が生まれる仕組みを理解し、翌日から実践できる形に落とし込みます。</p>
-                            <p class="text-[10px] text-accent/70 mt-2 font-cinzel">〜 19:00</p>
-                        </div>
-                    </div>
-                    <div class="relative pl-8">
-                        <div
-                            class="absolute w-2.5 h-2.5 bg-accent rounded-full -left-[6px] top-1.5 shadow-[0_0_10px_rgba(179,139,77,0.5)]">
-                        </div>
-                        <div class="text-[12px] font-cinzel text-accent mb-0.5 font-bold">19:00</div>
-                        <h3 class="text-sm font-bold text-white">食事・ディスカッション</h3>
-                    </div>
-                    <div class="relative pl-8">
-                        <div class="absolute w-2 h-2 bg-accent/60 rounded-full -left-[5px] top-1.5"></div>
-                        <div class="text-[11px] font-cinzel text-accent/80 mb-0.5 font-bold">20:00</div>
-                        <h3 class="text-sm font-bold text-white">終了（21:00 完全撤収）</h3>
-                    </div>
-                </div>
-
-                <!-- Vision + Image (Reused from Old) -->
-                <div class="flex flex-col gap-6">
-                    <div class="aspect-video bg-white/5 rounded-xl overflow-hidden border border-white/10 shadow-xl">
-                        <img src="photo4.jpg" alt="Vision Visual" class="visual-img">
-                    </div>
-                    <div
-                        class="bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 flex flex-col justify-center text-left">
-                        <div class="text-center mb-6">
-                            <span class="section-label">Vision</span>
-                            <h2 class="section-title text-white">健美食が求めているもの</h2>
-                        </div>
-                        <div class="text-[13px] text-gray-400 space-y-4 leading-relaxed text-left">
-                            <p>
-                                健美食が求めているのは、ただ情報を集めたい人だけではありません。<br>
-                                <span
-                                    class="text-white font-bold text-sm">健康経営という領域に可能性を感じ、自分の専門性をもっと広い価値へつなげていきたい人。</span>
-                            </p>
-                            <p>
-                                学ぶだけでなく、これからの実践や成長にも前向きに関わっていきたい人です。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ===================== Message ===================== -->
+    <section class="section-py px-6 bg-darker message-bg">
+        <div class="message-bg-img">
+            <img src="kenbisyoku_image3.jpg" class="img-cover" alt="">
         </div>
-    </section>
-
-    <!-- Upcoming Sessions -->
-    <section class="section-py px-6 bg-[#121418]">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-10">
-                <span class="section-label">Next Sessions</span>
-                <h2 class="section-title text-white">今後の開催日程</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="glass p-6 rounded-xl flex flex-col items-center text-center border border-accent/30">
-                    <span class="text-accent font-bold text-lg mb-1">5月</span>
-                    <p class="text-[11px] text-gray-500 font-cinzel mb-2 uppercase tracking-widest">May 17</p>
-                    <p class="text-white font-bold text-sm mb-2">行動が変わる構造</p>
-                    <p class="text-[10px] text-gray-500 leading-relaxed">意志に頼らない行動変容の仕組みを体験</p>
-                </div>
-                <div class="glass p-6 rounded-xl flex flex-col items-center text-center">
-                    <span class="text-accent font-bold text-lg mb-1">6月</span>
-                    <p class="text-[11px] text-gray-500 font-cinzel mb-2 uppercase tracking-widest">June 21</p>
-                    <p class="text-white font-bold text-sm mb-2">寺子屋コラボ</p>
-                    <p class="text-[10px] text-gray-500 leading-relaxed">外部コミュニティとの「混ざり」を活かす回</p>
-                </div>
-                <div class="glass p-6 rounded-xl flex flex-col items-center text-center">
-                    <span class="text-accent font-bold text-lg mb-1">8月</span>
-                    <p class="text-[11px] text-gray-500 font-cinzel mb-2 uppercase tracking-widest">August 2</p>
-                    <p class="text-white font-bold text-sm mb-2">寺子屋コラボ</p>
-                    <p class="text-[10px] text-gray-500 leading-relaxed">他コミュニティも混じる大規模BBQ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. メッセージ & クロージング -->
-    <section class="section-py px-6 bg-[#0c0e12] relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <!-- 背景画像3: フィナーレ -->
-            <img src="https://images.unsplash.com/photo-1522207182008-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
-                class="w-full h-full object-cover">
-        </div>
-        <div class="max-w-4xl mx-auto text-left relative z-10">
+        <div class="container-4xl relative" style="z-index:1;">
             <div class="mb-12 text-center">
                 <span class="section-label">Message</span>
                 <h2 class="section-title text-white mb-8">メッセージ</h2>
-                <div class="text-gray-300 body-text space-y-6 leading-relaxed max-w-2xl mx-auto text-left">
+                <div class="text-gray-300 body-text space-y-6 leading-relaxed text-left" style="max-width:42rem;margin:0 auto;">
                     <p>今、すでにうまく進んでいる人のためだけの場ではありません。</p>
                     <p>迷っている人にも。考えがまとまらない人にも。もっと良くしたい気持ちはあるのに、次の形が見えていない人にも。</p>
                     <p>健美食は、そうした人が少し視界を開き、次の一歩を見つけるための場です。<br>なぜなら、人が動き出すきっかけは、いつも大きな答えではないからです。</p>
                     <div class="text-center py-6">
-                        <p class="text-white font-bold text-lg leading-loose">ひとつのヒント。<br>ひとつの視点。<br>ひとつの出会い。</p>
-                        <p class="text-accent text-sm mt-3 font-bold tracking-wider">それだけで、前に進みやすくなります。</p>
+                        <p class="font-bold text-white leading-loose" style="font-size:1.125rem;">ひとつのヒント。<br>ひとつの視点。<br>ひとつの出会い。</p>
+                        <p class="text-accent font-bold" style="font-size:0.875rem;margin-top:0.75rem;letter-spacing:0.05em;">それだけで、前に進みやすくなります。</p>
                     </div>
                     <p>だからこの場では、何かを一気に変えることよりも、まずは一歩を踏み出しやすくなることを大切にしています。</p>
                 </div>
             </div>
 
-            <div class="border-t border-white/20 pt-12 text-center">
-                <h2 class="section-title text-white leading-snug mb-6">
-                    「自分にも、まだできることがあるかもしれない」
-                </h2>
-                <div class="text-gray-300 text-sm mb-10 leading-relaxed max-w-xl mx-auto space-y-4">
+            <div class="closing-border">
+                <h2 class="section-title text-white leading-snug mb-6">「自分にも、まだできることがあるかもしれない」</h2>
+                <div class="text-gray-300 body-text mb-10 leading-relaxed space-y-4" style="max-width:36rem;margin-left:auto;margin-right:auto;">
                     <p>そんな感覚を持ち帰りたい方へ。</p>
                     <p>新しい学びと出会いの中で、次の一歩のきっかけを一緒に見つけていきましょう。</p>
-                    <p>それが大切なのは、<span class="font-bold text-white">人は可能性を感じられたときに、初めて前を向いて進みやすくなる</span>からです。</p>
+                    <p>それが大切なのは、<strong class="text-white">人は可能性を感じられたときに、初めて前を向いて進みやすくなる</strong>からです。</p>
                 </div>
-                <div class="text-center px-4">
-                    <a href="#booking"
-                        class="inline-block w-full md:w-auto bg-deep-wine hover:bg-[#5e252c] text-white px-16 py-4 rounded-sm font-bold shadow-2xl transition-all tracking-widest text-sm text-center">
-                        プログラムへ参加する
-                    </a>
-                </div>
+                <a href="#booking" class="btn-wine" style="display:inline-block;width:100%;max-width:24rem;">プログラムへ参加する</a>
             </div>
         </div>
     </section>
 
-    <!-- Info & Booking -->
-    <section id="booking" class="section-py px-6 bg-[#121418] border-t border-white/5">
-        <div class="max-w-3xl mx-auto">
+    <!-- ===================== Info & Booking ===================== -->
+    <section id="booking" class="section-py px-6 bg-dark" style="border-top:1px solid rgba(255,255,255,0.05);">
+        <div class="container-3xl">
             <div class="text-center mb-10">
-                <h2 class="section-title text-white tracking-widest uppercase">イベント案内</h2>
+                <h2 class="section-title text-white" style="letter-spacing:0.1em;text-transform:uppercase;">イベント案内</h2>
             </div>
-            <div class="glass overflow-hidden rounded-2xl mb-10 text-left border border-white/10">
-                <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/5">
-                    <div
-                        class="p-5 bg-white/5 text-accent text-[10px] font-bold tracking-widest uppercase md:text-center">
-                        Date & Time</div>
-                    <div class="p-5 col-span-2 text-sm md:text-base text-gray-200 font-bold text-center md:text-left">
-                        2026年5月17日（日） 18:00 - 20:00</div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/5">
-                    <div
-                        class="p-5 bg-white/5 text-accent text-[10px] font-bold tracking-widest uppercase md:text-center">
-                        Venue</div>
-                    <div class="p-5 col-span-2 text-gray-200">
-                        <span class="font-bold text-base text-white block text-center md:text-left">Cafe JIN</span>
-                        <span class="text-[9px] text-gray-500 leading-relaxed mt-1 block text-center md:text-left">
-                            大阪府大阪市都島区都島本通3-16-3 パルハイツ 1F
-                        </span>
+
+            <div class="info-table">
+                <div class="info-row">
+                    <div class="info-label">Date &amp; Time</div>
+                    <div class="info-value">
+                        <p class="info-value-title text-white">2026年6月21日（日） 14:00 - 20:00</p>
+                        <p class="info-value-sub">寺子屋勉強会 14:00–17:15 ／ 健美食 18:00–20:00</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3">
-                    <div
-                        class="p-5 bg-white/5 text-accent text-[10px] font-bold tracking-widest uppercase md:text-center">
-                        Fee</div>
-                    <div class="p-5 col-span-2 text-xl font-bold text-white tracking-widest text-center md:text-left">
-                        4,000円</div>
+                <div class="info-row">
+                    <div class="info-label">Venue</div>
+                    <div class="info-value">
+                        <p class="font-bold text-white" style="font-size:1rem;">Cafe JIN</p>
+                        <p class="info-value-sub" style="margin-top:0.25rem;">大阪府大阪市都島区都島本通3-16-3 パルハイツ 1F</p>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 border-t border-white/5">
-                    <div
-                        class="p-5 bg-white/5 text-accent text-[10px] font-bold tracking-widest uppercase md:text-center">
-                        Capacity</div>
-                    <div class="p-5 col-span-2 text-sm font-bold text-white text-center md:text-left">
-                        20名（先着順）</div>
+                <div class="info-row">
+                    <div class="info-label">Fee</div>
+                    <div class="info-value">
+                        <p class="font-bold text-white" style="font-size:1.25rem;letter-spacing:0.05em;">両方参加：<span class="text-accent">7,000円</span></p>
+                        <p class="info-value-sub" style="margin-top:0.25rem;">勉強会のみ・健美食のみ：各 4,000円</p>
+                    </div>
+                </div>
+                <div class="info-row" style="border-bottom:none;">
+                    <div class="info-label">Capacity</div>
+                    <div class="info-value">
+                        <p class="font-bold text-white" style="font-size:0.875rem;">20名（先着順）</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-center">
+            <div class="text-center mb-12">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScLVMvNjs-4a3rfeg_JRhxLTmbRk0xwuY2uxy1QFQt2DfzlPQ/viewform?usp=sharing&ouid=115586088177003854639"
-                    target="_blank" rel="noopener noreferrer"
-                    class="block w-full text-center bg-accent hover:bg-[#c49a5b] text-[#121418] py-5 rounded-sm text-lg font-bold shadow-2xl transition-all tracking-widest uppercase">
+                    target="_blank" rel="noopener noreferrer" class="btn-accent">
                     参加申込フォーム
                 </a>
             </div>
 
-            <div class="mt-12">
-                <p class="font-cinzel text-gray-600 mb-4 font-bold tracking-widest uppercase text-[8px] text-center">
-                    Location</p>
-                <div
-                    class="w-full bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-video max-h-[350px]">
+            <div>
+                <p class="map-label">Location</p>
+                <div class="map-wrap">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000!2d135.5277041!3d34.7080658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e12fe5e5ac73%3A0xd0acc79bcd6f3707!2sCAFE%20JIN!5e0!3m2!1sja!2sjp!4v1714000000000!5m2!1sja!2sjp"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer
-        class="py-12 border-t border-white/5 text-center text-gray-700 font-cinzel text-[8px] tracking-widest uppercase">
-        FITNESS UNIVERSITY | KEN-BI-SHOKU PROJECT 2026
-    </footer>
+    <footer>FITNESS UNIVERSITY | KEN-BI-SHOKU PROJECT 2026</footer>
 
 </body>
-
 </html>
